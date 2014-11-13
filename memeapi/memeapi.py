@@ -18,7 +18,7 @@ class MemeAPI:
         if obj['success']:
             return obj['result']
 
-    def gen_search(self, q=None, page_index=None, page_size=None):
+    def generators_search(self, q=None, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Search'
         params = {}
         if q:
@@ -30,7 +30,7 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def gen_select_by_popular(self, page_index=None, page_size=None,
+    def generators_select_by_popular(self, page_index=None, page_size=None,
                               days=None):
         url = self._base_url + 'Generators_Select_ByPopular'
         params = {}
@@ -60,16 +60,7 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    #def instance_create():
-        #pass
-
-    #def instances_select_by_new():
-        #pass
-
-    #def gen_select_by_url_name_or_generator_id():
-        #pass
-
-    def gen_select_by_new(self, page_index=None, page_size=None):
+    def generators_select_by_new(self, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Select_ByNew'
         params = {}
         if page_index:
@@ -80,6 +71,15 @@ class MemeAPI:
         return self._handle_response(response)
 
     #def gen_select_by_trending():
+        #pass
+
+    #def instance_create():
+        #pass
+
+    #def instances_select_by_new():
+        #pass
+
+    #def gen_select_by_url_name_or_generator_id():
         #pass
 
     #def gen_select_related_by_display_name():
