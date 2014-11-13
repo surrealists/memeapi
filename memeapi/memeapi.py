@@ -105,10 +105,13 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    #def instance_create():
-        #pass
+    def instance_select(self, instance_id):
+        url = self._base_url + 'Instance_Select'
+        params = {'instanceID': instance_id}
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
 
-    #def instance_select():
+    #def instance_create():
         #pass
 
     #def content_flag_create():
