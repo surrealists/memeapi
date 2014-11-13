@@ -74,10 +74,10 @@ class MemeAPI:
         response = requests.get(url)
         return self._handle_response(response)
 
-    def generators_select_related_by_display_name(display_name):
+    def generators_select_related_by_display_name(self, display_name):
         url = self._base_url + 'Generators_Select_Related_ByDisplayName'
         params = {'displayName': display_name}
-        response = requests.get(url, params)
+        response = requests.get(url, params=params)
         return self._handle_response(response)
 
     #def instance_create():
