@@ -80,7 +80,8 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def generator_select_by_url_name_or_generator_id(self, url_name, generator_id=None):
+    def generator_select_by_url_name_or_generator_id(self, url_name,
+                                                     generator_id=None):
         url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
         params = {}
         if generator_id:
@@ -90,10 +91,21 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    #def instance_create():
-        #pass
+    def instances_select_by_new(self, language_code, page_index=None,
+                                page_size=None, url_name=None):
+        url = self._base_url + 'Instances_Select_ByNew'
+        params = {}
+        params['languageCode'] = language_code
+        if page_index:
+            params['pageIndex'] = page_index
+        if page_size:
+            params['pageSize'] = page_size
+        if url_name:
+            params['urlName'] = url_name
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
 
-    #def instances_select_by_new():
+    #def instance_create():
         #pass
 
     #def instance_select():
