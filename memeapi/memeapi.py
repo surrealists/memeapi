@@ -114,5 +114,11 @@ class MemeAPI:
     #def instance_create():
         #pass
 
-    #def content_flag_create():
-        #pass
+    def content_flag_create(self, content_url, reason, email):
+        url = self._base_url + 'ContentFlag_Create'
+        params = {}
+        params['contentUrl'] = content_url
+        params['reason'] = reason
+        params['email'] = email
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
