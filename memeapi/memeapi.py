@@ -1,5 +1,4 @@
-from urllib.parse import urlencode
-from exceptions import MemeAPIError
+from exceptions import MemeAPIError, MemeAPIBadFormatResponseError
 import json
 import requests
 
@@ -11,12 +10,12 @@ class MemeAPI:
 
     def _handle_response(self, response):
         if response.status_code != 200:
-            raise MemeAPIError(response.content,
-                               error_code=response.status_code)
-
-        obj = json.loads(response.text)
-        if obj['success']:
-            return obj['result']
+            raise MemeAPIError()
+        try:
+            obj = json.loads(response.text)
+        except:
+            raise MemeAPIBadFormatResponseError()
+        return obj
 
     def generators_search(self, q, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Search'
@@ -59,7 +58,7 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instance_create(self, username, password generator_id, image_id,
+    def instance_create(self, username, password, generator_id, image_id,
                         text_0, text_1, language_code='en'):
         url = self._base_url + 'Instance_Create'
         params = {}

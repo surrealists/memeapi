@@ -1,5 +1,8 @@
 #TODO: improve this
 
 
-class MemeAPIError:
+class MemeAPIError(Exception):
+    pass
+
+class MemeAPIBadFormatResponseError(Exception):
     pass
