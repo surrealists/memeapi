@@ -27,10 +27,7 @@ class MemeAPI:
             params['pageIndex'] = page_index
         if page_size:
             params['pageSize'] = page_size
-        url_params = urlencode(params)
-        if url_params:
-            url = url + '?' + url_params
-        response = requests.get(url)
+        response = requests.get(url, params=params)
         return self._handle_response(response)
 
     def gen_select_by_popular(self, page_index=None, page_size=None,
@@ -43,10 +40,7 @@ class MemeAPI:
             params['pageSize'] = page_size
         if days:
             params['days'] = days
-        url_params = urlencode(params)
-        if url_params:
-            url = url + '?' + url_params
-        response = requests.get(url)
+        response = requests.get(url, params=params)
         return self._handle_response(response)
 
     def instances_select_by_popular(self, language_code=None, page_index=None,
@@ -63,10 +57,7 @@ class MemeAPI:
             params['urlName'] = url_name
         if days:
             params['days'] = days
-        url_params = urlencode(params)
-        if url_params:
-            url = url + '?' + url_params
-        response = requests.get(url)
+        response = requests.get(url, params=params)
         return self._handle_response(response)
 
     #def instance_create():
@@ -85,10 +76,7 @@ class MemeAPI:
             params['pageIndex'] = page_index
         if page_size:
             params['pageSize'] = page_size
-        url_params = urlencode(params)
-        if url_params:
-            url = url + '?' + url_params
-        response = requests.get(url)
+        response = requests.get(url, params=params)
         return self._handle_response(response)
 
     #def gen_select_by_trending():
