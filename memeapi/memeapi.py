@@ -80,13 +80,20 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
+    def generator_select_by_url_name_or_generator_id(self, url_name, generator_id=None):
+        url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
+        params = {}
+        if generator_id:
+            params['generatorID'] = generator_id
+        if url_name:
+            params['urlName'] = url_name
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
+
     #def instance_create():
         #pass
 
     #def instances_select_by_new():
-        #pass
-
-    #def gen_select_by_url_name_or_generator_id():
         #pass
 
     #def instance_select():
