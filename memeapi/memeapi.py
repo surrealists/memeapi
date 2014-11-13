@@ -70,8 +70,10 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    #def gen_select_by_trending():
-        #pass
+    def generators_select_by_trending(self):
+        url = self._base_url + 'Generators_Select_ByTrending'
+        response = requests.get(url)
+        return self._handle_response(response)
 
     #def instance_create():
         #pass
