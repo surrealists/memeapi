@@ -18,11 +18,10 @@ class MemeAPI:
         if obj['success']:
             return obj['result']
 
-    def generators_search(self, q=None, page_index=None, page_size=None):
+    def generators_search(self, q, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Search'
         params = {}
-        if q:
-            params['q'] = q
+        params['q'] = q
         if page_index:
             params['pageIndex'] = page_index
         if page_size:
