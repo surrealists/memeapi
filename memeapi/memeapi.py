@@ -30,7 +30,7 @@ class MemeAPI:
         return self._handle_response(response)
 
     def generators_select_by_popular(self, page_index=None, page_size=None,
-                              days=None):
+                                     days=None):
         url = self._base_url + 'Generators_Select_ByPopular'
         params = {}
         if page_index:
