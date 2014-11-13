@@ -59,6 +59,20 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
+    def instance_create(self, username, password, language_code, generator_id,
+                        image_id, text_0, text_1):
+        url = self._base_url + 'Instance_Create'
+        params = {}
+        params['username'] = username
+        params['password'] = password
+        params['languageCode'] = language_code
+        params['generatorID'] = generator_id
+        params['imageID'] = image_id
+        params['text0'] = text_0
+        params['text1'] = text_1
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
+
     def generators_select_by_new(self, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Select_ByNew'
         params = {}
@@ -110,9 +124,6 @@ class MemeAPI:
         params = {'instanceID': instance_id}
         response = requests.get(url, params=params)
         return self._handle_response(response)
-
-    #def instance_create():
-        #pass
 
     def content_flag_create(self, content_url, reason, email):
         url = self._base_url + 'ContentFlag_Create'
