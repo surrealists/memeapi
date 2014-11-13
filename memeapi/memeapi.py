@@ -42,12 +42,11 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instances_select_by_popular(self, language_code=None, page_index=None,
-                                    page_size=None, url_name=None, days=None):
+    def instances_select_by_popular(self, page_index=None, page_size=None,
+                                    url_name=None, days=None,
+                                    language_code='en'):
         url = self._base_url + 'Instances_Select_ByPopular'
         params = {}
-        if language_code:
-            params['languageCode'] = language_code
         if page_index:
             params['pageIndex'] = page_index
         if page_size:
@@ -56,20 +55,21 @@ class MemeAPI:
             params['urlName'] = url_name
         if days:
             params['days'] = days
+        params['languageCode'] = language_code
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instance_create(self, username, password, language_code, generator_id,
-                        image_id, text_0, text_1):
+    def instance_create(self, username, password generator_id, image_id,
+                        text_0, text_1, language_code='en'):
         url = self._base_url + 'Instance_Create'
         params = {}
         params['username'] = username
         params['password'] = password
-        params['languageCode'] = language_code
         params['generatorID'] = generator_id
         params['imageID'] = image_id
         params['text0'] = text_0
         params['text1'] = text_1
+        params['languageCode'] = language_code
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
@@ -105,17 +105,17 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instances_select_by_new(self, language_code, page_index=None,
-                                page_size=None, url_name=None):
+    def instances_select_by_new(self, page_index=None, page_size=None,
+                                url_name=None, language_code='en'):
         url = self._base_url + 'Instances_Select_ByNew'
         params = {}
-        params['languageCode'] = language_code
         if page_index:
             params['pageIndex'] = page_index
         if page_size:
             params['pageSize'] = page_size
         if url_name:
             params['urlName'] = url_name
+        params['languageCode'] = language_code
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
