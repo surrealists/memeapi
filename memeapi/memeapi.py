@@ -1,6 +1,7 @@
-from exceptions import MemeAPIError, MemeAPIBadFormatResponseError
 import json
 import requests
+from .exceptions import MemeAPIError, MemeAPIBadFormatResponseError
+from ._compat import integer_types, string_types
 
 
 class MemeAPI:
@@ -20,11 +21,24 @@ class MemeAPI:
     def generators_search(self, q, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Search'
         params = {}
-        params['q'] = q
+
+        if isinstance(q, string_types):
+            params['q'] = q
+        else:
+            raise Exception("'q' must be string.")
+
         if page_index:
-            params['pageIndex'] = page_index
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
         if page_size:
-            params['pageSize'] = page_size
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
