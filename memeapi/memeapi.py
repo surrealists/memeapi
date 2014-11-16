@@ -46,12 +46,25 @@ class MemeAPI:
                                      days=None):
         url = self._base_url + 'Generators_Select_ByPopular'
         params = {}
+
         if page_index:
-            params['pageIndex'] = page_index
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
         if page_size:
-            params['pageSize'] = page_size
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
         if days:
-            params['days'] = days
+            if isinstance(days, integer_types):
+                params['days'] = days
+            else:
+                raise Exception("'days' must be integer.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
