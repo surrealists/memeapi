@@ -240,7 +240,13 @@ class MemeAPI:
 
     def instance_select(self, instance_id):
         url = self._base_url + 'Instance_Select'
-        params = {'instanceID': instance_id}
+        params = {}
+
+        if isinstance(instance_id, integer_types):
+            params['instanceID'] = instance_id
+        else:
+            raise Exception("'instance_id' must be integer.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
