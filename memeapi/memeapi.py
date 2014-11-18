@@ -25,22 +25,13 @@ class MemeAPI:
         url = self._base_url + 'Generators_Search'
         params = {}
 
-        if isinstance(q, string_types):
-            params['q'] = q
-        else:
-            raise Exception("'q' must be string.")
+        params['q'] = q
 
         if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
+            params['pageIndex'] = page_index
 
         if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
+            params['pageSize'] = page_size
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -51,22 +42,13 @@ class MemeAPI:
         params = {}
 
         if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
+            params['pageIndex'] = page_index
 
         if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
+            params['pageSize'] = page_size
 
         if days is not None:
-            if isinstance(days, integer_types):
-                params['days'] = days
-            else:
-                raise Exception("'days' must be integer.")
+            params['days'] = days
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -76,16 +58,10 @@ class MemeAPI:
         params = {}
 
         if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
+            params['pageIndex'] = page_index
 
         if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
+            params['pageSize'] = page_size
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -99,29 +75,20 @@ class MemeAPI:
         url = self._base_url + 'Generators_Select_Related_ByDisplayName'
         params = {}
 
-        if isinstance(display_name, string_types):
-            params['displayName'] = display_name
-        else:
-            raise Exception("'display_name' must be string.")
+        params['displayName'] = display_name
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
     def generators_select_by_url_name_or_generator_id(self, url_name,
-                                                     generator_id=None):
+                                                      generator_id=None):
         url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
         params = {}
 
-        if isinstance(url_name, string_types):
-            params['urlName'] = url_name
-        else:
-            raise Exception("'url_name' must be string.")
+        params['urlName'] = url_name
 
         if generator_id is not None:
-            if isinstance(generator_id, integer_types):
-                params['generatorID'] = generator_id
-            else:
-                raise Exception("'generator_id' must be integer.")
+            params['generatorID'] = generator_id
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -133,28 +100,16 @@ class MemeAPI:
         params = {}
 
         if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
+            params['pageIndex'] = page_index
 
         if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
+            params['pageSize'] = page_size
 
         if url_name is not None:
-            if isinstance(url_name, string_types):
-                params['urlName'] = url_name
-            else:
-                raise Exception("'url_name' must be string.")
+            params['urlName'] = url_name
 
         if days is not None:
-            if isinstance(days, integer_types):
-                params['days'] = days
-            else:
-                raise Exception("'days' must be integer.")
+            params['days'] = days
 
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
@@ -165,39 +120,16 @@ class MemeAPI:
         return self._handle_response(response)
 
     def instances_create(self, username, password, generator_id, image_id,
-                        text_0, text_1, language_code='en'):
+                         text_0, text_1, language_code='en'):
         url = self._base_url + 'Instance_Create'
-        params = {}
-
-        if isinstance(username, string_types):
-            params['username'] = username
-        else:
-            raise Exception("'username' must be string.")
-
-        if isinstance(password, string_types):
-            params['password'] = password
-        else:
-            raise Exception("'password' must be string.")
-
-        if isinstance(generator_id, integer_types):
-            params['generatorID'] = generator_id
-        else:
-            raise Exception("'generator_id' must be integer.")
-
-        if isinstance(image_id, integer_types):
-            params['imageID'] = image_id
-        else:
-            raise Exception("'image_id' must be integer.")
-
-        if isinstance(text_0, string_types):
-            params['text0'] = text_0
-        else:
-            raise Exception("'text_0' must be string.")
-
-        if isinstance(text_1, string_types):
-            params['text1'] = text_1
-        else:
-            raise Exception("'text_1' must be string.")
+        params = {
+            'username': username,
+            'password': password,
+            'generatorID': generator_id,
+            'imageID': image_id,
+            'text0': text_0,
+            'text1': text_1,
+        }
 
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
@@ -213,22 +145,13 @@ class MemeAPI:
         params = {}
 
         if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
+            params['pageIndex'] = page_index
 
         if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
+            params['pageSize'] = page_size
 
         if url_name is not None:
-            if isinstance(url_name, string_types):
-                params['urlName'] = url_name
-            else:
-                raise Exception("'url_name' must be string.")
+            params['urlName'] = url_name
 
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
@@ -242,32 +165,18 @@ class MemeAPI:
         url = self._base_url + 'Instance_Select'
         params = {}
 
-        if isinstance(instance_id, integer_types):
-            params['instanceID'] = instance_id
-        else:
-            raise Exception("'instance_id' must be integer.")
+        params['instanceID'] = instance_id
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
     def content_flag_create(self, content_url, reason, email):
         url = self._base_url + 'ContentFlag_Create'
-        params = {}
-
-        if isinstance(content_url, string_types):
-            params['contentUrl'] = content_url
-        else:
-            raise Exception("'content_url' must be string.")
-
-        if isinstance(reason, string_types):
-            params['reason'] = reason
-        else:
-            raise Exception("'reason' must be string.")
-
-        if isinstance(email, string_types):
-            params['email'] = email
-        else:
-            raise Exception("'email' must be string.")
+        params = {
+            'contentUrl': content_url,
+            'reason': reason,
+            'email': email,
+        }
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
