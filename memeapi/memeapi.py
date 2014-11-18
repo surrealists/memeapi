@@ -4,6 +4,9 @@ from .exceptions import MemeAPIError, MemeAPIBadFormatResponseError
 from ._compat import integer_types, string_types
 
 
+valid_language_codes = ('en', 'es', 'ru', '--')
+
+
 class MemeAPI:
 
     def __init__(self):
@@ -73,15 +76,36 @@ class MemeAPI:
                                     language_code='en'):
         url = self._base_url + 'Instances_Select_ByPopular'
         params = {}
-        if page_index:
-            params['pageIndex'] = page_index
-        if page_size:
-            params['pageSize'] = page_size
-        if url_name:
-            params['urlName'] = url_name
-        if days:
-            params['days'] = days
-        params['languageCode'] = language_code
+
+        if page_index is not None:
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
+        if page_size is not None:
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
+        if url_name is not None:
+            if isinstance(url_name, string_types):
+                params['urlName'] = url_name
+            else:
+                raise Exception("'url_name' must be string.")
+
+        if days is not None:
+            if isinstance(days, integer_types):
+                params['days'] = days
+            else:
+                raise Exception("'days' must be integer.")
+
+        if language_code in valid_language_codes:
+            params['languageCode'] = language_code
+        else:
+            raise Exception("'language_code' is invalid.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
