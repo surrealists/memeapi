@@ -155,10 +155,19 @@ class MemeAPI:
     def generators_select_by_new(self, page_index=None, page_size=None):
         url = self._base_url + 'Generators_Select_ByNew'
         params = {}
-        if page_index:
-            params['pageIndex'] = page_index
-        if page_size:
-            params['pageSize'] = page_size
+
+        if page_index is not None:
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
+        if page_size is not None:
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
