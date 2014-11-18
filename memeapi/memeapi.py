@@ -178,7 +178,13 @@ class MemeAPI:
 
     def generators_select_related_by_display_name(self, display_name):
         url = self._base_url + 'Generators_Select_Related_ByDisplayName'
-        params = {'displayName': display_name}
+        params = {}
+
+        if isinstance(display_name, string_types):
+            params['displayName'] = display_name
+        else:
+            raise Exception("'display_name' must be string.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
