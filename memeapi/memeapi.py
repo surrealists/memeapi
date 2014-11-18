@@ -253,8 +253,21 @@ class MemeAPI:
     def content_flag_create(self, content_url, reason, email):
         url = self._base_url + 'ContentFlag_Create'
         params = {}
-        params['contentUrl'] = content_url
-        params['reason'] = reason
-        params['email'] = email
+
+        if isinstance(content_url, string_types):
+            params['contentUrl'] = content_url
+        else:
+            raise Exception("'content_url' must be string.")
+
+        if isinstance(reason, string_types):
+            params['reason'] = reason
+        else:
+            raise Exception("'reason' must be string.")
+
+        if isinstance(email, string_types):
+            params['email'] = email
+        else:
+            raise Exception("'email' must be string.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
