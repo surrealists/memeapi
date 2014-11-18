@@ -4,5 +4,6 @@
 class MemeAPIError(Exception):
     pass
 
+
 class MemeAPIBadFormatResponseError(Exception):
     pass
