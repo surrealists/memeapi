@@ -71,6 +71,61 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
+    def generators_select_by_new(self, page_index=None, page_size=None):
+        url = self._base_url + 'Generators_Select_ByNew'
+        params = {}
+
+        if page_index is not None:
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
+        if page_size is not None:
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
+
+    def generators_select_by_trending(self):
+        url = self._base_url + 'Generators_Select_ByTrending'
+        response = requests.get(url)
+        return self._handle_response(response)
+
+    def generators_select_related_by_display_name(self, display_name):
+        url = self._base_url + 'Generators_Select_Related_ByDisplayName'
+        params = {}
+
+        if isinstance(display_name, string_types):
+            params['displayName'] = display_name
+        else:
+            raise Exception("'display_name' must be string.")
+
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
+
+    def generators_select_by_url_name_or_generator_id(self, url_name,
+                                                     generator_id=None):
+        url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
+        params = {}
+
+        if isinstance(url_name, string_types):
+            params['urlName'] = url_name
+        else:
+            raise Exception("'url_name' must be string.")
+
+        if generator_id is not None:
+            if isinstance(generator_id, integer_types):
+                params['generatorID'] = generator_id
+            else:
+                raise Exception("'generator_id' must be integer.")
+
+        response = requests.get(url, params=params)
+        return self._handle_response(response)
+
     def instances_select_by_popular(self, page_index=None, page_size=None,
                                     url_name=None, days=None,
                                     language_code='en'):
@@ -109,7 +164,7 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instance_create(self, username, password, generator_id, image_id,
+    def instances_create(self, username, password, generator_id, image_id,
                         text_0, text_1, language_code='en'):
         url = self._base_url + 'Instance_Create'
         params = {}
@@ -152,61 +207,6 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def generators_select_by_new(self, page_index=None, page_size=None):
-        url = self._base_url + 'Generators_Select_ByNew'
-        params = {}
-
-        if page_index is not None:
-            if isinstance(page_index, integer_types):
-                params['pageIndex'] = page_index
-            else:
-                raise Exception("'page_index' must be integer.")
-
-        if page_size is not None:
-            if isinstance(page_size, integer_types):
-                params['pageSize'] = page_size
-            else:
-                raise Exception("'page_size' must be integer.")
-
-        response = requests.get(url, params=params)
-        return self._handle_response(response)
-
-    def generators_select_by_trending(self):
-        url = self._base_url + 'Generators_Select_ByTrending'
-        response = requests.get(url)
-        return self._handle_response(response)
-
-    def generators_select_related_by_display_name(self, display_name):
-        url = self._base_url + 'Generators_Select_Related_ByDisplayName'
-        params = {}
-
-        if isinstance(display_name, string_types):
-            params['displayName'] = display_name
-        else:
-            raise Exception("'display_name' must be string.")
-
-        response = requests.get(url, params=params)
-        return self._handle_response(response)
-
-    def generator_select_by_url_name_or_generator_id(self, url_name,
-                                                     generator_id=None):
-        url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
-        params = {}
-
-        if isinstance(url_name, string_types):
-            params['urlName'] = url_name
-        else:
-            raise Exception("'url_name' must be string.")
-
-        if generator_id is not None:
-            if isinstance(generator_id, integer_types):
-                params['generatorID'] = generator_id
-            else:
-                raise Exception("'generator_id' must be integer.")
-
-        response = requests.get(url, params=params)
-        return self._handle_response(response)
-
     def instances_select_by_new(self, page_index=None, page_size=None,
                                 url_name=None, language_code='en'):
         url = self._base_url + 'Instances_Select_ByNew'
@@ -238,7 +238,7 @@ class MemeAPI:
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
-    def instance_select(self, instance_id):
+    def instances_select(self, instance_id):
         url = self._base_url + 'Instance_Select'
         params = {}
 
