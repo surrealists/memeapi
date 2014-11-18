@@ -30,13 +30,13 @@ class MemeAPI:
         else:
             raise Exception("'q' must be string.")
 
-        if page_index:
+        if page_index is not None:
             if isinstance(page_index, integer_types):
                 params['pageIndex'] = page_index
             else:
                 raise Exception("'page_index' must be integer.")
 
-        if page_size:
+        if page_size is not None:
             if isinstance(page_size, integer_types):
                 params['pageSize'] = page_size
             else:
@@ -50,19 +50,19 @@ class MemeAPI:
         url = self._base_url + 'Generators_Select_ByPopular'
         params = {}
 
-        if page_index:
+        if page_index is not None:
             if isinstance(page_index, integer_types):
                 params['pageIndex'] = page_index
             else:
                 raise Exception("'page_index' must be integer.")
 
-        if page_size:
+        if page_size is not None:
             if isinstance(page_size, integer_types):
                 params['pageSize'] = page_size
             else:
                 raise Exception("'page_size' must be integer.")
 
-        if days:
+        if days is not None:
             if isinstance(days, integer_types):
                 params['days'] = days
             else:
