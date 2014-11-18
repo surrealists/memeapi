@@ -211,13 +211,30 @@ class MemeAPI:
                                 url_name=None, language_code='en'):
         url = self._base_url + 'Instances_Select_ByNew'
         params = {}
-        if page_index:
-            params['pageIndex'] = page_index
-        if page_size:
-            params['pageSize'] = page_size
-        if url_name:
-            params['urlName'] = url_name
-        params['languageCode'] = language_code
+
+        if page_index is not None:
+            if isinstance(page_index, integer_types):
+                params['pageIndex'] = page_index
+            else:
+                raise Exception("'page_index' must be integer.")
+
+        if page_size is not None:
+            if isinstance(page_size, integer_types):
+                params['pageSize'] = page_size
+            else:
+                raise Exception("'page_size' must be integer.")
+
+        if url_name is not None:
+            if isinstance(url_name, string_types):
+                params['urlName'] = url_name
+            else:
+                raise Exception("'url_name' must be string.")
+
+        if language_code in valid_language_codes:
+            params['languageCode'] = language_code
+        else:
+            raise Exception("'language_code' is invalid.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
