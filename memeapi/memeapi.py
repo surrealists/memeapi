@@ -113,13 +113,42 @@ class MemeAPI:
                         text_0, text_1, language_code='en'):
         url = self._base_url + 'Instance_Create'
         params = {}
-        params['username'] = username
-        params['password'] = password
-        params['generatorID'] = generator_id
-        params['imageID'] = image_id
-        params['text0'] = text_0
-        params['text1'] = text_1
-        params['languageCode'] = language_code
+
+        if isinstance(username, string_types):
+            params['username'] = username
+        else:
+            raise Exception("'username' must be string.")
+
+        if isinstance(password, string_types):
+            params['password'] = password
+        else:
+            raise Exception("'password' must be string.")
+
+        if isinstance(generator_id, integer_types):
+            params['generatorID'] = generator_id
+        else:
+            raise Exception("'generator_id' must be integer.")
+
+        if isinstance(image_id, integer_types):
+            params['imageID'] = image_id
+        else:
+            raise Exception("'image_id' must be integer.")
+
+        if isinstance(text_0, string_types):
+            params['text0'] = text_0
+        else:
+            raise Exception("'text_0' must be string.")
+
+        if isinstance(text_1, string_types):
+            params['text1'] = text_1
+        else:
+            raise Exception("'text_1' must be string.")
+
+        if language_code in valid_language_codes:
+            params['languageCode'] = language_code
+        else:
+            raise Exception("'language_code' is invalid.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
