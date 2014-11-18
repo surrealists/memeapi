@@ -192,10 +192,18 @@ class MemeAPI:
                                                      generator_id=None):
         url = self._base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
         params = {}
-        if generator_id:
-            params['generatorID'] = generator_id
-        if url_name:
+
+        if isinstance(url_name, string_types):
             params['urlName'] = url_name
+        else:
+            raise Exception("'url_name' must be string.")
+
+        if generator_id is not None:
+            if isinstance(generator_id, integer_types):
+                params['generatorID'] = generator_id
+            else:
+                raise Exception("'generator_id' must be integer.")
+
         response = requests.get(url, params=params)
         return self._handle_response(response)
 
