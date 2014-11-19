@@ -1,6 +1,6 @@
 import json
 import requests
-from .exceptions import MemeAPIError, MemeAPIBadFormatResponseError
+from .exceptions import BadStatusError, NotJSONError, LanguageCodeError
 from ._compat import integer_types, string_types
 
 
@@ -14,11 +14,14 @@ class MemeAPI:
 
     def _handle_response(self, response):
         if response.status_code != 200:
-            raise MemeAPIError()
+            raise BadStatusError(
+                'MemeGenerator API returned a %s status code.' % \
+                (response.status_code,)
+            )
         try:
             obj = json.loads(response.text)
         except:
-            raise MemeAPIBadFormatResponseError()
+            raise NotJSONError('Response was not valid JSON.')
         return obj
 
     def generators_search(self, q, page_index=None, page_size=None):
@@ -114,7 +117,7 @@ class MemeAPI:
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
         else:
-            raise Exception("'language_code' is invalid.")
+            raise LanguageCodeError('Invalid language code.')
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -134,7 +137,7 @@ class MemeAPI:
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
         else:
-            raise Exception("'language_code' is invalid.")
+            raise LanguageCodeError('Invalid language code.')
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
@@ -156,7 +159,7 @@ class MemeAPI:
         if language_code in valid_language_codes:
             params['languageCode'] = language_code
         else:
-            raise Exception("'language_code' is invalid.")
+            raise LanguageCodeError('Invalid language code.')
 
         response = requests.get(url, params=params)
         return self._handle_response(response)
