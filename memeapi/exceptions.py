@@ -1,9 +1,10 @@
-#TODO: improve this
-
-
-class MemeAPIError(Exception):
+class BadStatusError(Exception):
     pass
 
 
-class MemeAPIBadFormatResponseError(Exception):
+class NotJSONError(Exception):
+    pass
+
+
+class LanguageCodeError(Exception):
     pass
