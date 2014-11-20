@@ -16,14 +16,14 @@ packages = [
     'memeapi',
 ]
 
-requires = []
+requires = ['requests>=2.1.0']
 
-with open('README.md', 'r') as f:
+with open('README.rst', 'r') as f:
     readme = f.read()
 
 setup(
     name='memeapi',
-    version='0.1',
+    version='0.1.1',
     description='Tiny wrapper over memegenerator.net API.',
     author='Cristian Cabrera',
     author_email='surrealcristian@gmail.com',
