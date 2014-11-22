@@ -156,6 +156,14 @@ def instances_select_by_popular(page_index=None, page_size=None, url_name=None,
 
 def instances_create(username, password, generator_id, image_id, text_0,
                      text_1, language_code='en'):
+    """
+    Creates a captioned image. 
+    Images created with this method are created in the database and may appear
+    on the website.
+    User credentials of an ordinary user must be provided to create images.
+    Sign up on http://memegenerator.net/ to create your user. 
+    """
+    
     url = _base_url + 'Instance_Create'
     params = {
         'username': username,
