@@ -101,10 +101,10 @@ def generators_select_related_by_display_name(display_name):
 
 def generators_select_by_url_name_or_generator_id(url_name, generator_id=None):
     """
-    Returns information about a specific generator, either by its generator_id 
+    Returns information about a specific generator, either by its generator_id
     or by its url_name.
     """
-    
+
     url = _base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
     params = {}
 
@@ -121,12 +121,12 @@ def instances_select_by_popular(page_index=None, page_size=None, url_name=None,
                                 days=None, language_code='en'):
     """
     Returns the most popular instances for a particular period (days == None
-    for all time, days = 1 for the last day, days = 7 for the last week) 
-    for a particular generator (url_name != None) or for all generators 
-    (url_name] == None). 
-    Only shows moderator approved content. 
+    for all time, days = 1 for the last day, days = 7 for the last week)
+    for a particular generator (url_name != None) or for all generators
+    (url_name] == None).
+    Only shows moderator approved content.
     """
-    
+
     url = _base_url + 'Instances_Select_ByPopular'
     params = {}
 
@@ -154,13 +154,13 @@ def instances_select_by_popular(page_index=None, page_size=None, url_name=None,
 def instances_create(username, password, generator_id, image_id, text_0,
                      text_1, language_code='en'):
     """
-    Creates a captioned image. 
+    Creates a captioned image.
     Images created with this method are created in the database and may appear
     on the website.
     User credentials of an ordinary user must be provided to create images.
-    Sign up on http://memegenerator.net/ to create your user. 
+    Sign up on http://memegenerator.net/ to create your user.
     """
-    
+
     url = _base_url + 'Instance_Create'
     params = {
         'username': username,
@@ -185,9 +185,9 @@ def instances_select_by_new(page_index=None, page_size=None, url_name=None,
     """
     Returns recently created instances, for a particular generator
     (url_name] != None) or for all generators (url_name == None).
-    Only shows moderator approved content. 
+    Only shows moderator approved content.
     """
-    
+
     url = _base_url + 'Instances_Select_ByNew'
     params = {}
 
