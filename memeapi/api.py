@@ -92,6 +92,9 @@ def generators_select_by_trending():
 
 
 def generators_select_related_by_display_name(display_name):
+    """
+    Returns generators that are related to a particular generator, a sort of 'see also' list.
+    """
     url = _base_url + 'Generators_Select_Related_ByDisplayName'
     params = {}
 
