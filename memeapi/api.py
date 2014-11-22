@@ -105,6 +105,9 @@ def generators_select_related_by_display_name(display_name):
 
 
 def generators_select_by_url_name_or_generator_id(url_name, generator_id=None):
+    """
+    Returns information about a specific generator, either by its generator_id or by its url_name.
+    """
     url = _base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
     params = {}
 
