@@ -185,6 +185,12 @@ def instances_create(username, password, generator_id, image_id, text_0,
 
 def instances_select_by_new(page_index=None, page_size=None, url_name=None,
                             language_code='en'):
+    """
+    Returns recently created instances, for a particular generator
+    (url_name] != None) or for all generators (url_name == None).
+    Only shows moderator approved content. 
+    """
+    
     url = _base_url + 'Instances_Select_ByNew'
     params = {}
 
