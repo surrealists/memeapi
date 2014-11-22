@@ -22,6 +22,9 @@ def _handle_response(response):
 
 
 def generators_search(q, page_index=None, page_size=None):
+    """
+    Returns a list of search results by the a search keyword.
+    """
     url = _base_url + 'Generators_Search'
     params = {}
 
