@@ -122,6 +122,14 @@ def generators_select_by_url_name_or_generator_id(url_name, generator_id=None):
 
 def instances_select_by_popular(page_index=None, page_size=None, url_name=None,
                                 days=None, language_code='en'):
+    """
+    Returns the most popular instances for a particular period (days == None
+    for all time, days = 1 for the last day, days = 7 for the last week) 
+    for a particular generator (url_name != None) or for all generators 
+    (url_name] == None). 
+    Only shows moderator approved content. 
+    """
+    
     url = _base_url + 'Instances_Select_ByPopular'
     params = {}
 
