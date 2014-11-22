@@ -41,6 +41,14 @@ def generators_search(q, page_index=None, page_size=None):
 
 
 def generators_select_by_popular(page_index=None, page_size=None, days=None):
+    """
+    Returns the most recently created generators. This list gets updated
+    whenever the website moderators approve another batch of generators to
+    appear on the website.
+    Some generators may not be approved due to poor quality, nsfw content,
+    etc, so this list is highly selective.
+    """
+
     url = _base_url + 'Generators_Select_ByPopular'
     params = {}
 
