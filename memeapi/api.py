@@ -22,9 +22,7 @@ def _handle_response(response):
 
 
 def generators_search(q, page_index=None, page_size=None):
-    """
-    Returns a list of search results by the a search keyword.
-    """
+    """Returns a list of search results by the a search keyword."""
     url = _base_url + 'Generators_Search'
     params = {}
 
@@ -41,9 +39,7 @@ def generators_search(q, page_index=None, page_size=None):
 
 
 def generators_select_by_popular(page_index=None, page_size=None, days=None):
-    """
-    Returns the most popular generators for the last n days. 
-    """
+    """Returns the most popular generators for the last n days."""
     url = _base_url + 'Generators_Select_ByPopular'
     params = {}
 
@@ -83,9 +79,7 @@ def generators_select_by_new(page_index=None, page_size=None):
 
 
 def generators_select_by_trending():
-    """
-    Returns recently trending generators. 
-    """
+    """Returns recently trending generators."""
     url = _base_url + 'Generators_Select_ByTrending'
     response = requests.get(url)
     return _handle_response(response)
@@ -93,7 +87,8 @@ def generators_select_by_trending():
 
 def generators_select_related_by_display_name(display_name):
     """
-    Returns generators that are related to a particular generator, a sort of 'see also' list.
+    Returns generators that are related to a particular generator, a sort of
+    'see also' list.
     """
     url = _base_url + 'Generators_Select_Related_ByDisplayName'
     params = {}
@@ -106,8 +101,10 @@ def generators_select_related_by_display_name(display_name):
 
 def generators_select_by_url_name_or_generator_id(url_name, generator_id=None):
     """
-    Returns information about a specific generator, either by its generator_id or by its url_name.
+    Returns information about a specific generator, either by its generator_id 
+    or by its url_name.
     """
+    
     url = _base_url + 'Generator_Select_ByUrlNameOrGeneratorID'
     params = {}
 
@@ -213,9 +210,7 @@ def instances_select_by_new(page_index=None, page_size=None, url_name=None,
 
 
 def instances_select(instance_id):
-    """
-    Select an instance by its instanceID. 
-    """
+    """ Select an instance by its instanceID."""
     url = _base_url + 'Instance_Select'
     params = {}
 
@@ -226,9 +221,7 @@ def instances_select(instance_id):
 
 
 def content_flag_create(content_url, reason, email):
-    """
-    Flag content for removal, for cases of harassment etc.
-    """
+    """ Flag content for removal, for cases of harassment etc."""
     url = _base_url + 'ContentFlag_Create'
     params = {
         'contentUrl': content_url,
