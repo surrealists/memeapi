@@ -83,6 +83,9 @@ def generators_select_by_new(page_index=None, page_size=None):
 
 
 def generators_select_by_trending():
+    """
+    Returns recently trending generators. 
+    """
     url = _base_url + 'Generators_Select_ByTrending'
     response = requests.get(url)
     return _handle_response(response)
