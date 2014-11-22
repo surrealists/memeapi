@@ -213,6 +213,9 @@ def instances_select_by_new(page_index=None, page_size=None, url_name=None,
 
 
 def instances_select(instance_id):
+    """
+    Select an instance by its instanceID. 
+    """
     url = _base_url + 'Instance_Select'
     params = {}
 
