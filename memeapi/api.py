@@ -226,6 +226,9 @@ def instances_select(instance_id):
 
 
 def content_flag_create(content_url, reason, email):
+    """
+    Flag content for removal, for cases of harassment etc.
+    """
     url = _base_url + 'ContentFlag_Create'
     params = {
         'contentUrl': content_url,
