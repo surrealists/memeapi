@@ -23,7 +23,7 @@ with open('README.rst', 'r') as f:
 
 setup(
     name='memeapi',
-    version='0.1.1',
+    version='0.2.3',
     description='Tiny wrapper over memegenerator.net API.',
     author='Cristian Cabrera',
     author_email='surrealcristian@gmail.com',
@@ -34,11 +34,11 @@ setup(
     install_requires=requires,
     license='MIT',
     zip_safe=False,
-    classifiers=(
+    classifiers=[
         'Development Status :: 1 - Planning',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
         'Programming Language :: Python',
-    ),
+    ],
 )
