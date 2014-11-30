@@ -14,7 +14,7 @@ if sys.argv[-1] == 'publish':
 
 packages = [
     'memeapi',
-]
+    ]
 
 requires = ['requests>=2.1.0']
 
@@ -36,9 +36,12 @@ setup(
     zip_safe=False,
     classifiers=[
         'Development Status :: 1 - Planning',
+        'Environment :: Console',
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
+        'Operating System :: OS Independent',
         'Programming Language :: Python',
-    ],
-)
+        'Topic :: Games/Entertainment',
+        ],
+    )
